@@ -38,8 +38,8 @@ property_double (levels, _("Lower makes opacity higher. Higher makes Transparent
 
 property_double (gaussian, _("Gaussian blur to create Glow Effect"), 6.0)
    description (_("Blur that applies to the whole filter"))
-   value_range (0.0, 75.0)
-   ui_range    (0.24, 75.0)
+   value_range (0.0, 95.0)
+   ui_range    (0.24, 95.0)
    ui_gamma    (3.0)
    ui_meta     ("unit", "pixel-distance")
 
