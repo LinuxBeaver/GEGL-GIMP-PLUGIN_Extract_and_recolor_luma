@@ -96,7 +96,6 @@ static void attach (GeglOperation *operation)
 
 
   gegl_node_link_many (input, shadow, levels, bloom, lumen, color, gaussian, output, NULL);
-  gegl_node_link (input, NULL);
   gegl_node_connect_from (lumen, "aux", color, "output");
 
 
