@@ -17,26 +17,37 @@
  * Colorize Luminance 2022 Beaver 
  */
 
+/*June 2023 recreation of GEGL Graph.
+If you paste this syntax in Gimp's GEGL graph you can test
+this filter without installing it.
+
+shadows-highlights
+levels 
+bloom strength=0
+gegl:svg-luminancetoalpha aux=[  color-overlay value=#aaff9d   ]
+ color-overlay value=#aaff9d 
+gaussian-blur std-dev-x=0.5 std-dev-y=0.5 */
+
 #include "config.h"
 #include <glib/gi18n-lib.h>
 
 #ifdef GEGL_PROPERTIES
 
-property_double (shadow, _("Decrease Luminance"), 0.0)
+property_double (shadow, _("Exposure of highlights"), 0.0)
     description (_("Adjust exposure of highlights"))
     value_range (-100.0, 0.0)
 
 
-property_double (strength, _("Strength of Glow"), 55.0)
+property_double (strength, _("Glow Strength"), 55.0)
     description (_("Glow strength"))
     value_range (0.0, G_MAXDOUBLE)
     ui_range    (0.0, 100.0)
 
-property_double (levels, _("Lower makes opacity higher. Higher makes Transparent"), 1.0)
-    description (_("Input luminance level to become white"))
-    ui_range    (0.3, 2.0)
+property_double (levels, _("Opacity of the light"), 1.0)
+    description (_("The lower values the more intense"))
+    ui_range    (0.6, 2.0)
 
-property_double (gaussian, _("Gaussian blur to create Glow Effect"), 6.0)
+property_double (gaussian, _("Gaussian blur for Glow Effect"), 6.0)
    description (_("Blur that applies to the whole filter"))
    value_range (0.0, 95.0)
    ui_range    (0.24, 95.0)
@@ -58,7 +69,7 @@ property_color (value, _("Color"), "#ff9dff")
 static void attach (GeglOperation *operation)
 {
   GeglNode *gegl = operation->node;
-  GeglNode *input, *output, *bloom, *lumen, *it, *color, *gaussian, *shadow, *levels;
+  GeglNode *input, *output, *bloom, *lumen, *color, *gaussian, *shadow, *levels;
 
   input    = gegl_node_get_input_proxy (gegl, "input");
   output   = gegl_node_get_output_proxy (gegl, "output");
@@ -77,10 +88,6 @@ static void attach (GeglOperation *operation)
 
    gaussian = gegl_node_new_child (gegl,
                                   "operation", "gegl:gaussian-blur",
-                                  NULL);
-
-   it = gegl_node_new_child (gegl,
-                                  "operation", "gegl:invert-transparency",
                                   NULL);
 
    levels = gegl_node_new_child (gegl,
