@@ -25,7 +25,16 @@ Windows
  Linux (Flatpak)
  /home/(USERNAME)/.var/app/org.gimp.GIMP/data/gegl-0.4/plug-ins
 
+## OS specific location to put GEGL Filter binaries 
 
+Windows
+C:\Users\USERNAME\AppData\Local\gegl-0.4\plug-ins
+ 
+ Linux 
+ /home/(USERNAME)/.local/share/gegl-0.4/plug-ins
+ 
+ Linux (Flatpak)
+ /home/(USERNAME)/.var/app/org.gimp.GIMP/data/gegl-0.4/plug-ins
 
 ## Compiling and Installing
 
