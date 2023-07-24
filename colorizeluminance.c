@@ -119,12 +119,14 @@ gegl_op_class_init (GeglOpClass *klass)
   operation_class->attach = attach;
 
   gegl_operation_class_set_keys (operation_class,
-    "name",               "gegl:colorizeluminance",
-    "title",              _("Extract and Recolor Luminance"),
+    "name",               "lb:colorizeluminance",
+    "title",              _("Extract and Recolor Luma"),
     "categories",         "Lighting",
     "reference-hash",     "ffhaaa1kfk11ffacxx3gb10b073c9",
     "license",            "GPL3+",
     "description", _("GEGL Extracts the brightest pixels, recolors and blurs  them. This filter is meant to be fused with Gimp's blend modes, such as Addition mid opacity. If the color is white the Luminance and LCH Lightness blend mode will make it glow. Experiment with various blend modes and see what happens."),
+    "gimp:menu-path", "<Image>/Filters/Light and Shadow",
+    "gimp:menu-label", _("Extract and recolor brightness channel..."),
     NULL);
 }
 
