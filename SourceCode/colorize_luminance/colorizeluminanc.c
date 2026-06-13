@@ -17,7 +17,7 @@
  * Colorize Luminance 2022 Beaver 
  */
 
-/*June 2023 recreation of GEGL Graph. If you paste this syntax in Gimp's GEGL graph you can test this filter without installing it.
+/*June 2023 recreation of GEGL Graph. If you paste this syntax in Gimpꞌs GEGL graph you can test this filter without installing it.
 
 id=1 
 plus aux=[  ref=1 
@@ -41,7 +41,7 @@ gaussian-blur std-dev-x=0.5 std-dev-y=0.5
 
 
 property_boolean (easy_mode, _("Auto Blend with Plus blend mode"), FALSE)
-  description    (_("Auto blend with the gegl:plus blend mode at 70% opacity for quality results. Plus is a blend mode exclusive to GEGL which behaves very similar to GIMP's addition blend mode. Both addition and plus are the most recommended blend mode for this filter. The technical reason I used GEGL's Plus instead of GIMPs addition is because I want to make my filters work outside of GIMP and if it used GIMP's addition that would mean no other app but GIMP could use it "))
+  description    (_("Auto blend with the gegl:plus blend mode at 70% opacity for quality results. Plus is a blend mode exclusive to GEGL which behaves very similar to GIMPꞌs addition blend mode. Both addition and plus are the most recommended blend mode for this filter. The technical reason I used GEGLꞌs Plus instead of GIMPs addition is because I want to make my filters work outside of GIMP and if it used GIMPꞌs addition that would mean no other app but GIMP could use it "))
 
 
 property_double (shadow, _("Adjust exposure of highlights"), -90.0)
@@ -50,7 +50,7 @@ property_double (shadow, _("Adjust exposure of highlights"), -90.0)
 
 
 property_double (strength, _("Glow Strength"), 55.0)
-    description (_("Bloom's Glow strength"))
+    description (_("Bloomꞌs Glow strength"))
     value_range (0.0, 1000)
     ui_range    (0.0, 300.0)
 
@@ -198,7 +198,7 @@ GeglOperationMetaClass *operation_meta_class = GEGL_OPERATION_META_CLASS (klass)
     "categories",         "Lighting",
     "reference-hash",     "ffhaaa1kfk11ffacxx3gb10b073c9",
     "license",            "GPL3+",
-    "description", _("Somewhat similar to the Bloom filter except you can choose the color. Extract the brightest pixels, recolors them and blur it  them. This filter is meant to be fused with GIMP's blend modes, such as plus mid opacity. If the color is white the Luminance and LCH Lightness blend mode will make it glow. Experiment with various blend modes and see what happens"),
+    "description", _("Somewhat similar to the Bloom filter except you can choose the color. Extract the brightest pixels, recolors them and blur it  them. This filter is meant to be fused with GIMPꞌs blend modes, such as plus mid opacity. If the color is white the Luminance and LCH Lightness blend mode will make it glow. Experiment with various blend modes and see what happens"),
     "gimp:menu-path", "<Image>/Filters/Light and Shadow",
     "gimp:menu-label", _("Extract and recolor luminance channel (Glow)..."),
     NULL);
